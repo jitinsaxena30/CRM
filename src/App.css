@@ -1,0 +1,75 @@
+*{
+  padding: 0;
+  margin: 0;
+}
+
+li {
+  list-style: none;
+}
+
+a{
+  text-decoration: none;
+}
+
+
+
+#contactIcon{
+  margin-right: 10px;
+  outline: none;
+}
+
+#contactIcon:hover{
+  cursor: pointer;
+}
+
+.contactButton > button{
+    border-radius: 10px;
+    border-style: none;
+    background-color: #ffffff;
+}
+
+.contactButton >button > a{
+    color: #000000;
+}
+
+.menuBar{
+  background-color: #f3f3f3;
+  color: #797979;
+  min-height: 100vh;
+  /* max-height: auto; */
+  width: 15vw;
+  text-align: left;
+  margin-left: -12px;
+}
+
+.menuBar > h6{
+  padding-top: 20px;
+}
+
+.menuBar > h5{
+  /* text-align: center; */
+  padding-bottom: 20px;
+  padding-top: 20px;
+  padding-left: 30px;
+}
+
+.menuBar > button{
+  border: none;
+  background-color: #000000;
+  margin-right: 15px;
+  color: #ffffff;
+  outline: none;
+  margin-top: 15px;
+}
+
+.sticky{
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+}
+
+.userStatus{
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+}
