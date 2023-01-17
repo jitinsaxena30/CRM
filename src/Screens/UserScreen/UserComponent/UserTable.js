@@ -14,6 +14,7 @@ import Select from "@mui/material/Select";
 import EmailIcon from "@mui/icons-material/Email";
 import LocalPhoneIcon from "@mui/icons-material/LocalPhone";
 
+
 const data = [
   {
     id: "1",
@@ -94,21 +95,19 @@ const data = [
   },
 ];
 
-function UserTable() {
-  const [status, setStatus] = useState("not connected");
-  
-  
-  const handleChange = (event) => { 
-    setStatus(event.target.value);
-  };
-  
-  // const userStatus = createContext();
-  // <userStatus.Provider value={status} />
-  
 
 
 
 
+  export default function UserTable() {
+
+
+    const [status, setStatus] = useState('Offline');  
+
+    const handleChange = (event) => { 
+      setStatus(event.target.value);
+    };
+  
   return (
     <div className="container" style={{width:"100%"}}>
       <div className="row">
@@ -192,5 +191,5 @@ function UserTable() {
   );
 }
 
-// export {userStatus};
-export default UserTable;
+
+

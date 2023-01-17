@@ -46,21 +46,16 @@ a{
   padding-top: 20px;
 }
 
-.menuBar > h5{
+.menubarLink{
   /* text-align: center; */
+
+  color: #797979;
   padding-bottom: 20px;
   padding-top: 20px;
   padding-left: 30px;
 }
 
-.menuBar > button{
-  border: none;
-  background-color: #000000;
-  margin-right: 15px;
-  color: #ffffff;
-  outline: none;
-  margin-top: 15px;
-}
+
 
 .sticky{
   position: -webkit-sticky;
