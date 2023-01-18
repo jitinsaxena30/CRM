@@ -18,25 +18,25 @@ function UserMenu() {
         <Link to="">
           <h5 className="menubarLink">
             <AssignmentOutlinedIcon />
-            Project - 2
-          </h5>
-        </Link>
-        <Link to="">
-          <h5 className="menubarLink">
-            <AssignmentOutlinedIcon />
             Project - 1
           </h5>
         </Link>
         <Link to="">
           <h5 className="menubarLink">
             <AssignmentOutlinedIcon />
-            Project - 4
+            Project - 2
           </h5>
         </Link>
         <Link to="">
           <h5 className="menubarLink">
             <AssignmentOutlinedIcon />
             Project - 3
+          </h5>
+        </Link>
+        <Link to="">
+          <h5 className="menubarLink">
+            <AssignmentOutlinedIcon />
+            Project - 4
           </h5>
         </Link>
         <Link to="">

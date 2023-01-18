@@ -1,4 +1,4 @@
-import React, { useState} from "react";
+import React, { useEffect, useState} from "react";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
 import TableCell from "@mui/material/TableCell";
@@ -102,12 +102,12 @@ const data = [
   export default function UserTable() {
 
 
-    const [status, setStatus] = useState('Offline');  
-
+    const [status, setStatus] = useState('Not Connected');  
     const handleChange = (event) => { 
       setStatus(event.target.value);
     };
-  
+
+
   return (
     <div className="container" style={{width:"100%"}}>
       <div className="row">

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, {useEffect, useState } from "react";
 import Box from "@mui/material/Box";
 import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
@@ -6,28 +6,12 @@ import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
 import StatusIcon from "@mui/icons-material/CircleRounded";
 
-function UserStatus() {
-  const [status, setStatus] = useState('Offline');
-  const [color, setColor] = useState('#C0C0C0');
+function UserStatus({...props}) {
 
-  const handleChange = (event) => {
-    let currentStatus = event.target.value;
-    setStatus(currentStatus);
-    if (currentStatus === 'Online') {
-      setColor('#80FF00');
-    }  if (currentStatus === 'Away') {
-      setColor('#FFBC00');
-    }  if (currentStatus === 'Offline') {
-      setColor('#C0C0C0');
-    } if(currentStatus === 'In-Call') {
-      setColor('#FF0000');
-    }
-  };
-
-  console.log(status);
-
+  const {handleChange,color,status} = {...props};
 
   return (
+
     <div className="container">
       <div className="row">
         <div
@@ -58,20 +42,22 @@ function UserStatus() {
                 defaultValue={""}
                 value={status}
                 label="Status"
-                onChange={handleChange}
+                // onChange={(event)=>{handleChange(event.target.value)}}
                 
               >
-                <MenuItem value={"Online"} >Online</MenuItem>
-                <MenuItem value={"Offline"} >Offline</MenuItem>
-                <MenuItem value={"In-Call"} >In Call</MenuItem>
-                <MenuItem value={"Away"} >Away</MenuItem>
+                <MenuItem value={"Online"} onClick={()=>{handleChange("Online")}} >Online</MenuItem>
+                <MenuItem value={"Offline"} onClick={()=>{handleChange("Offline")}} >Offline</MenuItem>
+                <MenuItem value={"InCall"} onClick={()=>{handleChange("InCall")}} >In Call</MenuItem>
+                <MenuItem value={"Away"} onClick={()=>{handleChange("Away")}} >Away</MenuItem>
               </Select>
             </FormControl>
           </Box>
         </div>
       </div>
     </div>
+
   );
 }
 
 export default UserStatus;
+
