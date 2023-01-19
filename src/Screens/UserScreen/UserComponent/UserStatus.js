@@ -1,4 +1,4 @@
-import React, {useEffect, useState } from "react";
+// import React, {useEffect, useState } from "react";
 import Box from "@mui/material/Box";
 import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
@@ -47,7 +47,7 @@ function UserStatus({...props}) {
               >
                 <MenuItem value={"Online"} onClick={()=>{handleChange("Online")}} >Online</MenuItem>
                 <MenuItem value={"Offline"} onClick={()=>{handleChange("Offline")}} >Offline</MenuItem>
-                <MenuItem value={"InCall"} onClick={()=>{handleChange("InCall")}} >In Call</MenuItem>
+                <MenuItem value={"In Call"} onClick={()=>{handleChange("In Call")}} >In Call</MenuItem>
                 <MenuItem value={"Away"} onClick={()=>{handleChange("Away")}} >Away</MenuItem>
               </Select>
             </FormControl>

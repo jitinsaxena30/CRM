@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useState } from "react";
 import AccountCircleOutlinedIcon from '@mui/icons-material/AccountCircleOutlined';
 import UserStatus from "./UserStatus";
 
@@ -18,7 +18,7 @@ const handleChange = (changedStatus)=>{
       setColor('#FFBC00');
     }  if (currentStatus === 'Offline') {
       setColor('#C0C0C0');
-    } if(currentStatus === 'InCall') {
+    } if(currentStatus === 'In Call') {
       setColor('#FF0000');
     }
 }
@@ -31,8 +31,8 @@ const handleChange = (changedStatus)=>{
       <div className="row">
 
         <div className="col-sm-5" style={{marginTop: "25px"  }}>
-          <AccountCircleOutlinedIcon/> <span > <strong> User 1</strong></span>
-          <p style={{color: `${color}`, paddingLeft:"28px" }}>{status}</p>
+          <AccountCircleOutlinedIcon/> <span style={{fontWeight:'bold'}}>  User 1 :</span> <span style={{color: `${color}`, paddingLeft:"28px" }}>{status}</span>
+          <p ></p>
         </div>
         <div className="col-sm-2"></div>
         <div className="col-sm-4">

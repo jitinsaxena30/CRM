@@ -1,4 +1,4 @@
-import React, { useEffect, useState} from "react";
+import React, { useEffect, useState } from "react";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
 import TableCell from "@mui/material/TableCell";
@@ -13,7 +13,7 @@ import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
 import EmailIcon from "@mui/icons-material/Email";
 import LocalPhoneIcon from "@mui/icons-material/LocalPhone";
-
+import axios from "axios";
 
 const data = [
   {
@@ -95,24 +95,53 @@ const data = [
   },
 ];
 
+export default function UserTable() {
+  
+  
+  
+  const [user, setUser] = useState();
+
+  // const getUserData = async () => {
+  //   try {
+  //     const response = await fetch('https://dummyjson.com/users');
+  //     const data = await response.json();
+  //     setUser(data.users)
+  //   } catch (error) {
+  //     console.log(error)
+  //   }
 
 
 
 
-  export default function UserTable() {
+    
+  
 
+  const [status, setStatus] = useState("Not Connected");
+  const handleChange = (event) => {
+    setStatus(event.target.value);
+  };
 
-    const [status, setStatus] = useState('Not Connected');  
-    const handleChange = (event) => { 
-      setStatus(event.target.value);
-    };
+  // useEffect(() => {
+  //   getUserData();
+  // }, []);
 
+  useEffect(()=>{
+    axios.get('https://dummyjson.com/users')
+    .then((res)=>{
+      setUser(res.data.users);
+      // console.log(res);
+    })
+    .catch((error)=>(console.log(error)));
+  },[])
 
   return (
-    <div className="container" style={{width:"100%"}}>
+    <div className="container" style={{ width: "100%", marginBottom:"20px" }}>
       <div className="row">
         <div className="col">
-          <TableContainer component={Paper} style={{ marginTop: "50px", width:"70vw"}}>
+          <TableContainer
+            component={Paper}
+            style={{ marginTop: "50px", width: "70vw" }}
+          >
             <Table size="small" aria-label="a dense table">
               <TableHead>
                 <TableRow>
@@ -134,54 +163,67 @@ const data = [
                 </TableRow>
               </TableHead>
               <TableBody>
-                {data.map((user) => (
-                  <TableRow
-                    key={user.id}
-                    sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
-                  >
-                    <TableCell component="th" scope="row">
-                      {user.id}
-                    </TableCell>
-                    <TableCell align="center">{user.fname}</TableCell>
-                    <TableCell align="center">{user.lname}</TableCell>
-                    <TableCell align="center" className="contactButton">
-                      <button id="contactIcon">
-                        <a href={`mailto:${user.email}`} target="_blank" rel="noreferrer">
-                          <EmailIcon />
-                        </a>
-                      </button>
-                      <button id="contactIcon">
-                        <a href={`tel:${user.mobile}`}>
-                          <LocalPhoneIcon />
-                        </a>
-                      </button>
-                    </TableCell>
+                {user && user.map((elem) => {
+                  return (
+                    
+                      <TableRow
+                        sx={{
+                          "&:last-child td, &:last-child th": { border: 0 },
+                        }}
+                        key={elem.id}
+                      >
+                        <TableCell component="th" scope="row">
+                          {elem.id}
+                        </TableCell>
+                        <TableCell align="center">{elem.firstName}</TableCell>
+                        <TableCell align="center">{elem.lastName}</TableCell>
+                        <TableCell align="center" className="contactButton">
+                          <button id="contactIcon">
+                            <a
+                              href={`mailto:${elem.email}`}
+                              target="_blank"
+                              rel="noreferrer"
+                            >
+                              <EmailIcon />
+                            </a>
+                          </button>
+                          <button id="contactIcon">
+                            <a href={`tel:${elem.phone}`}>
+                              <LocalPhoneIcon />
+                            </a>
+                          </button>
+                        </TableCell>
 
-                    <TableCell align="center">
-                      <Box style={{ width: "100%" }}>
-                        <FormControl style={{ width: "12vw" }}>
-                          <InputLabel id="demo-simple-select-label">
-                            Status
-                          </InputLabel>
-                          <Select
-                            labelId="demo-simple-select-label"
-                            id="demo-simple-select"
-                            defaultValue={""}
-                            value={user.status}
-                            label="Status"
-                            onChange={handleChange}
-                          >
-                            <MenuItem value={"connected"}>Connected</MenuItem>
-                            <MenuItem value={"not connected"}>
-                              Not Connected
-                            </MenuItem>
-                            <MenuItem value={"Follow Up"}>Follow Up</MenuItem>
-                          </Select>
-                        </FormControl>
-                      </Box>
-                    </TableCell>
-                  </TableRow>
-                ))}
+                        <TableCell align="center">
+                          <Box style={{ width: "100%" }}>
+                            <FormControl style={{ width: "12vw" }}>
+                              <InputLabel id="demo-simple-select-label">
+                                Status
+                              </InputLabel>
+                              <Select
+                                labelId="demo-simple-select-label"
+                                id="demo-simple-select"
+                                defaultValue={""}
+                                value={elem.status}
+                                label="Status"
+                                onChange={handleChange}
+                              >
+                                <MenuItem value={"connected"}>
+                                  Connected
+                                </MenuItem>
+                                <MenuItem value={"not connected"}>
+                                  Not Connected
+                                </MenuItem>
+                                <MenuItem value={"Follow Up"}>
+                                  Follow Up
+                                </MenuItem>
+                              </Select>
+                            </FormControl>
+                          </Box>
+                        </TableCell>
+                      </TableRow>
+                  );
+                })}
               </TableBody>
             </Table>
           </TableContainer>
@@ -190,6 +232,3 @@ const data = [
     </div>
   );
 }
-
-
-
